@@ -14,6 +14,7 @@ body {
 	line-height: 1.6;
 	color: #fff;
 	overflow-x: hidden;
+	user-select: none;
 }
 
 a {
@@ -35,15 +36,65 @@ img {
 
 /* Utils */
 .btn {
+	display: inline-block;
+	background: #fff;
+	color: #000;
+	border-radius: 5px;
+	font-size: 15px;
+	font-weight: 600;
+	line-height: 14px;
+	letter-spacing: 1px;
 	border: none;
-	padding: 0.5rem 0.8rem;
+	text-transform: uppercase;
+	padding: 20px 34px;
 	cursor: pointer;
+	min-width: 135px;
+}
+
+h4 {
+	font-size: 12px;
+	color: #00e980e7;
 	text-transform: uppercase;
 }
 
+h3 {
+	font-size: 24px;
+	font-weight: 300;
+	margin: 5px 0;
+}
+
+.btn-cta:hover {
+	opacity: 0.8;
+}
+
+.btn-outline {
+	background: none;
+	border: 2px solid #fff;
+	color: #fff;
+}
+
+.btn-outline:hover {
+	border-color: #ffffff6c;
+}
+
+.legal-text {
+	font-size: 10px;
+	color: #ccc;
+	margin-top: 20px;
+	word-spacing: 1.5px;
+}
+
+.sub-link {
+	display: block;
+	font-size: 12px;
+	margin-top: 5px;
+	color: #9e9d9d;
+	text-decoration: underline;
+}
 /* Header */
 .header {
 	height: 530px;
+	background: url('../img/header.jpg') no-repeat center center/cover;
 }
 
 .header nav {
@@ -54,12 +105,80 @@ img {
 
 .header nav .login-btn {
 	background: none;
+	border: none;
 	letter-spacing: 1px;
 	color: #fff;
 	font-weight: bold;
+	cursor: pointer;
+	text-transform: uppercase;
+}
+
+.header nav .login-btn:hover {
+	opacity: 0.8;
 }
 
 .header .logo {
 	width: 270px;
 	margin: 20px 0;
+}
+
+.header .header-content {
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-start;
+	align-items: center;
+	margin-top: 30px;
+}
+
+.header .header-text-1 {
+	font-size: 22px;
+	font-weight: 700;
+}
+
+.header .header-text-2 {
+	font-size: 16px;
+	margin: 20px 0;
+	word-spacing: 1px;
+}
+
+/* Sub-header */
+.sub-header {
+	display: grid;
+	grid-template-columns: 2fr 4fr 2fr;
+	padding: 30px 40px;
+	grid-gap: 2.5rem;
+	align-items: center;
+	background: linear-gradient(
+		318.68deg,
+		#0f495c 0%,
+		#0d3640 49.72%,
+		#08141f 100%
+	);
+}
+
+.sub-header > div:last-child {
+	justify-self: end;
+	align-self: flex-end;
+}
+
+.sub-header > div:last-child .sub-link {
+	text-align: center;
+}
+/* Media Queries */
+@media (max-width: 768px) {
+	.header .logo {
+		width: 180px;
+	}
+
+	.header .header-content {
+		text-align: center;
+		padding: 0 30px;
+		margin-top: 50px;
+	}
+	.header .header-text-1 {
+		font-size: 16px;
+	}
+	.header .header-text-2 {
+		font-size: 14px;
+	}
 }
