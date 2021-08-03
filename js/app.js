@@ -1,3 +1,6 @@
+const liveSports = document.querySelector('.live-sports');
+const mediaQuery = window.matchMedia('(max-width: 768px)');
+
 const sportLive = document.getElementById('live-sport');
 const breakingNews = document.getElementById('breaking-news');
 const bigEvent = document.getElementById('biggest-events');
@@ -14,14 +17,48 @@ const eventBtn = document.getElementById('events-btn');
 // 	breakingNews.style.display = 'block';
 // });
 
-function displayEL(hidEl1, hidEl2, hidBor1, hidBor2, showEl, showBor) {
-	hidBor1.style.borderBottom = 'none';
-	hidBor2.style.borderBottom = 'none';
-	hidEl1.style.display = 'none';
-	hidEl2.style.display = 'none';
-	showEl.style.display = 'block';
-	showBor.style.borderBottom = '6px solid #fff';
-	container.style.animation = 'none';
+function changeBackground(el) {}
+
+function hideElement(el) {
+	el.style.display = 'none';
+}
+
+function hideBorder(el) {
+	el.style.borderBottom = 'none';
+}
+
+function hideAll(el, borderEl) {
+	hideElement(el);
+	hideBorder(borderEl);
+}
+
+function showElement(el) {
+	el.style.display = 'block';
+}
+
+function showBorder(el) {
+	el.style.borderBottom = '6px solid #fff';
+}
+
+function showAll(el, borderEl) {
+	showElement(el);
+	showBorder(borderEl);
+}
+
+function displayEL(showEl) {
+	if (showEl === sportLive) {
+		hideAll(breakingNews, newsBtn);
+		hideAll(bigEvent, eventBtn);
+		showAll(sportLive, sportBtn);
+	} else if (showEl === bigEvent) {
+		hideAll(breakingNews, newsBtn);
+		hideAll(sportLive, sportBtn);
+		showAll(bigEvent, eventBtn);
+	} else if (showEl === breakingNews) {
+		hideAll(sportLive, sportBtn);
+		hideAll(bigEvent, eventBtn);
+		showAll(breakingNews, newsBtn);
+	}
 	setTimeout(() => {
 		container.style.animation = '';
 	}, 10);
@@ -30,10 +67,31 @@ function displayEL(hidEl1, hidEl2, hidBor1, hidBor2, showEl, showBor) {
 liveNav.addEventListener('click', (event) => {
 	container.style.animation = 'none';
 	if (event.target.id === 'news-btn') {
-		displayEL(sportLive, bigEvent, sportBtn, eventBtn, breakingNews, newsBtn);
+		displayEL(breakingNews);
+		if (mediaQuery.matches) {
+			liveSports.style.background =
+				"url('/img/breaking-news-small.jpg') no-repeat center center / cover";
+		} else {
+			liveSports.style.background =
+				"url('/img/breaking-news.full.jpg') no-repeat center center / cover";
+		}
 	} else if (event.target.id === 'events-btn') {
-		displayEL(sportLive, breakingNews, sportBtn, newsBtn, bigEvent, eventBtn);
+		displayEL(bigEvent);
+		if (mediaQuery.matches) {
+			liveSports.style.background =
+				"url('/img/live-events.small.jpg') no-repeat center center / cover";
+		} else {
+			liveSports.style.background =
+				"url('/img/live-events-full.jpg') no-repeat center center / cover";
+		}
 	} else if (event.target.id === 'sports-btn') {
-		displayEL(bigEvent, breakingNews, eventBtn, newsBtn, sportLive, sportBtn);
+		displayEL(sportLive);
+		if (mediaQuery.matches) {
+			liveSports.style.background =
+				"url('/img/live-sports-small.jpg') no-repeat center center / cover";
+		} else {
+			liveSports.style.background =
+				"url('/img/live-sports.jpg') no-repeat center center / cover";
+		}
 	}
 });

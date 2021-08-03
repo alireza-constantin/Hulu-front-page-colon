@@ -352,7 +352,8 @@ h3 {
 }
 
 .live-sports .container {
-	animation: show-content 0.5s ease-in forwards;
+	animation: show-content 1s ease-in forwards;
+	height: 200px;
 }
 
 .live-sports .live-sports-content .text-xl {
@@ -502,12 +503,23 @@ h3 {
 		margin: 150px auto;
 		max-width: 320px;
 		padding-left: 0;
+		justify-content: center;
 		text-align: center;
 		justify-self: center;
 	}
 
 	.live-sports .live-sports-content .sub-text {
 		font-size: 16px;
+		margin-top: 20px;
+	}
+
+	.live-sports .nav ul li {
+		padding-right: 20px;
+		font-size: 12px;
+	}
+
+	.live-sports .live-sports-content .text-xl {
+		font-size: 38px;
 	}
 }
 
